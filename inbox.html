@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Threads</title>
+    <style>
+        /* Add CSS styles here */
+        .email-thread {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Threads</h1>
+    <div id="emailThreadsContainer"></div>
+
+    <script>
+        // Your list of email threads
+        const emailThreads = [
+        email_threads = [
+            {
+                "subject": "Parent-Teacher Conference Schedule",
+                "from": "teacher.linda@school.com",
+                "to": "parentsgroup@school.com"
+                "body": "Dear Parents, We are scheduling our next parent-teacher conferences. Please let me know your preferred time slot for next week."
+            },
+            {
+                "subject": "Parent-Teacher Conference Schedule",
+                "from": "derek.fatherof2@gmail.com",
+                "to": "teacher.linda@school.com",
+                "body": "Hi Ms. Linda, I would like to schedule a conference for Tuesday afternoon if possible. Thank you."
+            },
+            {
+                "subject": "Community Garden Initiative",
+                "from": "green.thumb@neighborgardens.com",
+                "to": "communitygroup@ourtown.com",
+                "body": "Hello Community Members, We're starting a community garden project and need volunteers. Interested in gardening? Join us!"
+            },
+            {
+                "subject": "Community Garden Initiative",
+                "from": "nature.lover42@gmail.com",
+                "to": "green.thumb@neighborgardens.com",
+                "body": "I'd love to be a part of this! I have experience in organic gardening and can lead a workshop."
+            },
+            {
+                "subject": "Car Pool Arrangement for School",
+                "from": "busy.mom@gmail.com",
+                "to": "parentsgroup@school.com",
+                "body": "Hi everyone, I'm looking to set up a car pool for our kids' school commute. Anyone interested in participating?"
+            },
+            {
+                "subject": "Car Pool Arrangement for School",
+                "from": "dad.on.the.go@gmail.com",
+                "to": "busy.mom@gmail.com",
+                "body": "Count me in for the carpool. I can take the Tuesday and Thursday shifts."
+            },
+            {
+                "subject": "Weekend Hiking Trip Plan",
+                "from": "hiking.enthusiast@gmail.com",
+                "to": "outdoorclub@hikingfans.com",
+                "body": "Let's plan a hiking trip this weekend to the Blue Ridge Mountains. Who's in for an adventure?"
+            },
+            {
+                "subject": "Weekend Hiking Trip Plan",
+                "from": "mountain.trekker@gmail.com",
+                "to": "hiking.enthusiast@gmail.com",
+                "body": "Sounds like a great plan! I can help with route planning and logistics."
+            },
+            {
+                "subject": "Local Art Exhibition Opening",
+                "from": "artlover@citygallery.com",
+                "to": "cultureclub@ourtown.com",
+                "body": "Dear Art Enthusiasts, We're excited to invite you to the opening of our new art exhibition this Friday at the City Gallery."
+            },
+            {
+                "subject": "Local Art Exhibition Opening",
+                "from": "modernartfan@gmail.com",
+                "to": "artlover@citygallery.com",
+                "body": "Thank you for the invitation! I'll definitely be there and will bring a few friends who love art."
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "sarah.communityleader@gmail.com",
+                "to": "local.neighborhood@ourtown.com",
+                "body": "Hi Neighbors, I'm thinking of starting a volunteer group for cleaning up our streets. This can be a great way to improve our community. Who's interested?"
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "mark.greenheart@gmail.com",
+                "to": "sarah.communityleader@gmail.com",
+                "body": "Great initiative, Sarah! I'm in. I can also bring some cleanup tools and supplies."
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "lucy.at.home@gmail.com",
+                "to": "sarah.communityleader@gmail.com",
+                "body": "Count me in! I can help with organizing the cleanup schedule and routes."
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "dave.runner@gmail.com",
+                "to": "sarah.communityleader@gmail.com",
+                "body": "I'd love to help. I can create flyers to spread the word in our community."
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "sarah.communityleader@gmail.com",
+                "to": "local.neighborhood@ourtown.com",
+                "body": "Hi Neighbors, I'm thinking of starting a volunteer group for cleaning up our streets. This can be a great way to improve our community. Who's interested?"
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "mark.greenheart@gmail.com",
+                "to": "sarah.communityleader@gmail.com",
+                "body": "Great initiative, Sarah! I'm in. I can also bring some cleanup tools and supplies."
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "lucy.at.home@gmail.com",
+                "to": "sarah.communityleader@gmail.com",
+                "body": "Count me in! I can help with organizing the cleanup schedule and routes."
+            },
+            {
+                "subject": "New Street Cleanup Volunteer Group",
+                "from": "dave.runner@gmail.com",
+                "to": "sarah.communityleader@gmail.com",
+                "body": "I'd love to help. I can create flyers to spread the word in our community."
+            },
+            {
+                "subject": "Urgent: Review of Last Quarter's Data Needed",
+                "from": "boss@company.com",
+                "to": "employee@company.com",
+                "body": "The numbers for the last quarter are concerning. I need another pair of eyes to review the data and identify any discrepancies. Please prioritize this and report back with your findings."
+            },
+            {
+                "subject": "Urgent: Review of Last Quarter's Data Needed",
+                "from": "employee@company.com",
+                "to": "boss@company.com",
+                "body": "Understood. I will start with the sales and expenses report, then move on to the client acquisition data. I'll also cross-check with the team leads to ensure all inputs were accurate."
+            },
+            {
+                "subject": "Urgent: Review of Last Quarter's Data Needed",
+                "from": "employee@company.com",
+                "to": "finance.team@company.com",
+                "body": "Team, I'm reviewing last quarter's data for discrepancies. Please send me all relevant reports and data by EOD. Especially need insights on budget variances and expenditure trends."
+            },
+            {
+                "subject": "Urgent: Review of Last Quarter's Data Needed",
+                "from": "employee@company.com",
+                "to": "sales.team@company.com",
+                "body": "Please provide a detailed report on last quarter's client interactions and any issues that might have impacted sales. It's crucial for our data review."
+            },
+            {
+                "subject": "Lunch Outing This Wednesday",
+                "from": "alice@company.com",
+                "to": "team@company.com",
+                "body": "Hey team, How about we go out for lunch this Wednesday? There's a new Thai place that opened up nearby. Let me know who's in!"
+            },
+            {
+                "subject": "Lunch Outing This Wednesday",
+                "from": "bob@company.com",
+                "to": "alice@company.com",
+                "body": "Sounds like a great idea, Alice! I'm definitely in. Love Thai food!"
+            },
+            {
+                "subject": "Lunch Outing This Wednesday",
+                "from": "carol@company.com",
+                "to": "alice@company.com",
+                "body": "Count me in! It's been a while since we all went out together. Looking forward to it."
+            },
+            {
+                "subject": "Friday Happy Hour Plans?",
+                "from": "dave@company.com",
+                "to": "team@company.com",
+                "body": "Team, I'm thinking of organizing a happy hour this Friday at The Rusty Anchor. Who's up for some end-of-week relaxation?"
+            },
+            {
+                "subject": "Friday Happy Hour Plans?",
+                "from": "ellen@company.com",
+                "to": "dave@company.com",
+                "body": "Great idea, Dave! I could definitely use a drink after this week. I'll be there."
+            },
+            {
+                "subject": "Friday Happy Hour Plans?",
+                "from": "frank@company.com",
+                "to": "dave@company.com",
+                "body": "I'm in! Should we invite the new interns as well? It might be a good opportunity for them to mingle."
+            },
+            {
+                "subject": "Friday Happy Hour Plans?",
+                "from": "grace@company.com",
+                "to": "dave@company.com",
+                "body": "That sounds perfect. I'll join, and I can bring some board games too. Let's make it a fun evening!"
+            }
+            // ... (populate this with your email_threads data)
+        ];
+
+        // Function to display email threads
+        function displayEmailThreads() {
+            const container = document.getElementById('emailThreadsContainer');
+            emailThreads.forEach(thread => {
+                const div = document.createElement('div');
+                div.classList.add('email-thread');
+                div.innerHTML = `
+                    <h3>${thread.subject}</h3>
+                    <p><strong>From:</strong> ${thread.from}</p>
+                    <p><strong>To:</strong> ${thread.to}</p>
+                    <p>${thread.body}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Call the function to display threads
+        displayEmailThreads();
+    </script>
+</body>
+</html>
